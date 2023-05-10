@@ -1,13 +1,20 @@
 {
     "name": "ToDo app",
-    "manifest_version": 2,
+    "manifest_version": 3,
     "version": "1.0",
     "description": "simple todo app as web",
     "icons": {
-        "48": "logo.png"
+        "48": "/src/images/logo.png"
     },
-    "browser_action": {
-        "default_popup": "popup.html",
-        "default_icon": "logo.png"
-    }
+    "action": {
+        "default_popup": "/src/popup.html",
+        "default_icon": "/src/images/logo.png"
+    },
+    "background": {
+        "service_worker": "src/scripts/background.js"
+    },
+    "permissions": [
+        "storage",
+        "contextMenus"
+    ]
 }

@@ -3,13 +3,22 @@ const parser = new DOMParser();
 const deleteTaskButtons = document.querySelectorAll('#deleteTask');
 const newTaskForm = document.querySelector('#newTask');
 
-const taskList = JSON.parse(localStorage.getItem('taskList')) || [];
+let taskList = []
+chrome.storage.sync.get(['taskList'], (data) => {
+    if (data.taskList) {
+        taskList = data.taskList;
+        renderTask();
+    }
+})
 
 
 const renderTask = () => {
     const taskListDom = document.querySelector('#task-list');
     taskListDom.innerHTML = '';
-    localStorage.setItem('taskList', JSON.stringify(taskList));
+    chrome.storage.sync.set({ taskList: taskList }
+        , () => {
+            console.log('Task List Updated');
+        })
     taskList.forEach((task, index) => {
         const node = parser.parseFromString(
             `<div class="d-flex flex-row mt-1 justify-content-between align-items-center rounded p-0 pl-2 bg-list" role="alert">
@@ -38,7 +47,3 @@ newTaskForm.addEventListener('submit', (e) => {
     addTask(e.target.elements[0].value);
     e.target.reset();
 })
-
-
-
-renderTask()
