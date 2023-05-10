@@ -10,3 +10,8 @@ h1 {
 .bg-list {
     background-color: #f5f3f3;
 }
+
+#taskCheck:checked+p {
+    text-decoration: line-through;
+    color: #ccc;
+}

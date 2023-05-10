@@ -12,7 +12,10 @@ chrome.contextMenus.onClicked.addListener((data) => {
             if (taskdata.taskList) {
                 taskList = taskdata.taskList;
             }
-            taskList.push(data.selectionText);
+            taskList.push({
+                text: data.selectionText,
+                status: false
+            });
             chrome.storage.sync.set({ taskList: taskList }
                 , () => {
                     console.log('Task List Updated');
