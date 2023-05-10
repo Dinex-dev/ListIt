@@ -6,18 +6,18 @@ const items = {
 chrome.contextMenus.create(items)
 
 chrome.contextMenus.onClicked.addListener((data) => {
-    if (data.menuItemId === 'AddTask' && data.selectionText) {
-        chrome.storage.sync.get(['taskList'], (data) => {
+    if (data.menuItemId === 'AddTask') {
+        chrome.storage.sync.get(['taskList'], (taskdata) => {
             let taskList = []
-            if (data.taskList) {
-                taskList = data.taskList;
+            if (taskdata.taskList) {
+                taskList = taskdata.taskList;
             }
-            taskList.push(String(data.selectionText));
+            taskList.push(data.selectionText);
             chrome.storage.sync.set({ taskList: taskList }
                 , () => {
                     console.log('Task List Updated');
-                })
+                }
+            )
         })
     }
 })
-
