@@ -10,6 +10,7 @@ const ctx = await esbuild.context({
     plugins: [
         htmlPlugin()
     ],
+    tsconfig: 'tsconfig.json',
 })
 
 await ctx.watch()

@@ -46,7 +46,7 @@ const renderTask = () => {
   });
 };
 
-const addTask = (task) => {
+const addTask = (task: Task) => {
   taskList.push(task);
   renderTask();
 };
