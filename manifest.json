@@ -3,15 +3,36 @@
     "manifest_version": 3,
     "version": "1.0",
     "description": "simple todo app as web",
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "dist/scripts/content.js"
+            ],
+            "run_at": "document_start"
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "dist/scripts/inject.js"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ],
     "icons": {
-        "48": "/src/images/logo.png"
+        "48": "src/images/logo.png"
     },
     "action": {
-        "default_popup": "/src/popup.html",
-        "default_icon": "/src/images/logo.png"
+        "default_popup": "dist/popup.html",
+        "default_icon": "src/images/logo.png"
     },
     "background": {
-        "service_worker": "src/scripts/background.js"
+        "service_worker": "dist/scripts/background.js"
     },
     "permissions": [
         "storage",

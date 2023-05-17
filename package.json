@@ -1,0 +1,21 @@
+{
+  "name": "list_it",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node build.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@chialab/esbuild-plugin-html": "^0.17.2",
+    "esbuild": "^0.17.19",
+    "esbuild-plugin-manifest": "^0.6.0"
+  },
+  "dependencies": {
+    "@types/chrome": "^0.0.235"
+  }
+}
