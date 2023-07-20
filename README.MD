@@ -12,7 +12,7 @@ cd ListIt
 pnpm run dev
 ```
 
-Now import the project in chromeium based browser
+Now import the project in chromium based browser
 
 ## Screenshots
 
